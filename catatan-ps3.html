@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="id" lang="id">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Arsip Catatan PS3</title>
+<style type="text/css">
+body { margin: 0; padding: 0; background: #DDE1DC; color: #1E2528; font-family: Georgia, "Times New Roman", serif; font-size: 20px; line-height: 1.5; }
+#wrap { width: 1180px; margin: 0 auto; background: #EEF0EC; border-left: 1px solid #8A958F; border-right: 1px solid #8A958F; }
+#head { background: #1E2528; color: #EEF0EC; padding: 22px 36px 18px 36px; border-bottom: 6px double #8A958F; }
+#head h1 { margin: 0; font-size: 38px; font-weight: normal; letter-spacing: 1px; }
+#head p { margin: 4px 0 0 0; font-size: 18px; color: #B5BFB9; font-style: italic; }
+#main { padding: 24px 36px 12px 36px; }
+table.cols { width: 100%; border-collapse: collapse; }
+td.left { width: 380px; vertical-align: top; padding-right: 28px; border-right: 1px solid #8A958F; }
+td.right { vertical-align: top; padding-left: 28px; }
+h2 { margin: 0 0 10px 0; font-size: 24px; font-weight: normal; border-bottom: 2px solid #1E2528; padding-bottom: 4px; }
+ul.list { list-style: none; margin: 0; padding: 0; }
+ul.list li { margin: 0; padding: 0; border-bottom: 1px solid #B5BFB9; }
+ul.list a { display: block; padding: 9px 8px; color: #1E2528; text-decoration: none; font-size: 20px; }
+ul.list a:hover, ul.list a:focus { background: #2F5D62; color: #EEF0EC; }
+ul.list li.on a { background: #C9D3CE; border-left: 6px solid #2F5D62; padding-left: 8px; }
+ul.list span.tgl { display: block; font-size: 15px; color: #5C6862; font-style: italic; }
+ul.list li.on span.tgl { color: #3B4742; }
+label { display: block; margin: 12px 0 4px 0; font-size: 17px; color: #3B4742; font-style: italic; }
+input.judul { width: 96%; font-family: Georgia, serif; font-size: 22px; padding: 8px; border: 2px solid #1E2528; background: #FFFFFF; }
+textarea { width: 96%; font-family: Georgia, serif; font-size: 20px; padding: 8px; border: 2px solid #1E2528; background: #FFFFFF; }
+textarea.isi { height: 270px; }
+textarea.kecil { height: 110px; font-size: 17px; }
+.btn { display: inline-block; margin: 12px 10px 0 0; padding: 9px 20px; background: #1E2528; color: #EEF0EC; font-family: Georgia, serif; font-size: 20px; text-decoration: none; border: 2px solid #1E2528; cursor: pointer; }
+.btn:hover, .btn:focus { background: #2F5D62; border-color: #2F5D62; }
+.btn2 { background: #EEF0EC; color: #1E2528; }
+.btn2:hover, .btn2:focus { background: #C9D3CE; color: #1E2528; border-color: #1E2528; }
+.btnx { background: #EEF0EC; color: #7A2E2E; border-color: #7A2E2E; }
+.btnx:hover, .btnx:focus { background: #7A2E2E; color: #EEF0EC; border-color: #7A2E2E; }
+#status { margin: 16px 0 0 0; padding: 8px 12px; border-left: 6px solid #2F5D62; background: #DDE1DC; font-size: 18px; min-height: 26px; }
+#share { margin-top: 20px; padding: 14px 16px 16px 16px; border: 1px solid #8A958F; border-top: 4px double #1E2528; background: #F6F7F4; display: none; }
+#share h2 { font-size: 22px; }
+.cat { font-size: 16px; color: #5C6862; margin: 4px 0 0 0; }
+#foot { padding: 14px 36px 22px 36px; border-top: 1px solid #8A958F; font-size: 16px; color: #5C6862; }
+#foot p { margin: 4px 0; }
+</style>
+</head>
+<body>
+<div id="wrap">
+
+<div id="head">
+<h1>Arsip Catatan PS3</h1>
+<p>Konfigurasi, pengaturan, dan temuan. Disimpan di browser, bisa dibagikan.</p>
+</div>
+
+<div id="main">
+<table class="cols" cellspacing="0" cellpadding="0">
+<tr>
+<td class="left">
+<h2>Daftar catatan</h2>
+<ul class="list" id="daftar"></ul>
+<p class="cat" id="jumlah"></p>
+<a class="btn" id="btnBaru" href="#" onclick="return baru();">Catatan baru</a>
+<div style="height:14px"></div>
+<h2>Masukkan dari teks</h2>
+<label for="impor">Tempel hasil ekspor di sini</label>
+<textarea id="impor" class="kecil" rows="4" cols="30"></textarea>
+<a class="btn btn2" id="btnImpor" href="#" onclick="return imporTeks();">Impor</a>
+</td>
+
+<td class="right">
+<h2 id="judulForm">Catatan baru</h2>
+<label for="judul">Judul</label>
+<input type="text" id="judul" class="judul" value="" />
+<label for="isi">Isi catatan</label>
+<textarea id="isi" class="isi" rows="10" cols="60"></textarea>
+<div>
+<a class="btn" id="btnSimpan" href="#" onclick="return simpan();">Simpan catatan</a>
+<a class="btn btn2" id="btnBagi" href="#" onclick="return bagikan();">Bagikan</a>
+<a class="btn btn2" id="btnSemua" href="#" onclick="return bagikanSemua();">Ekspor semua</a>
+<a class="btn btnx" id="btnHapus" href="#" onclick="return hapus();">Hapus</a>
+</div>
+<div id="status">Siap.</div>
+
+<div id="share">
+<h2 id="shareJudul">Bagikan catatan</h2>
+<label for="shareTeks">Teks siap salin</label>
+<textarea id="shareTeks" class="kecil" rows="5" cols="60"></textarea>
+<div id="shareLinkBox">
+<label for="shareUrl">Alamat halaman (buka di perangkat lain)</label>
+<textarea id="shareUrl" class="kecil" rows="3" cols="60"></textarea>
+</div>
+<a class="btn btn2" id="btnEmail" href="#">Kirim lewat email</a>
+<a class="btn btn2" id="btnTutup" href="#" onclick="return tutupBagi();">Tutup</a>
+</div>
+</td>
+</tr>
+</table>
+</div>
+
+<div id="foot">
+<p>Cara pakai di PS3: pilih tautan atau tombol dengan D-pad atau stik kiri, tekan X untuk membuka. Ketik lewat papan ketik layar.</p>
+<p>Catatan disimpan di browser ini. Untuk cadangan, gunakan Ekspor semua lalu salin teksnya.</p>
+</div>
+
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var notes = [];
+var cur = -1;
+var KEY = "ps3notes";
+
+function el(id) { return document.getElementById(id); }
+
+function setStatus(t) { el("status").innerHTML = ""; el("status").appendChild(document.createTextNode(t)); }
+
+function pad(n) { return (n < 10 ? "0" : "") + n; }
+
+function now() {
+  var d = new Date();
+  return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()) + " " + pad(d.getHours()) + ":" + pad(d.getMinutes());
+}
+
+/* ---------- Penyimpanan: localStorage, cadangan cookie ---------- */
+
+function serialize() {
+  var out = [];
+  for (var i = 0; i < notes.length; i++) {
+    out.push(escape(notes[i].t) + "|" + escape(notes[i].b) + "|" + escape(notes[i].d));
+  }
+  return out.join("~");
+}
+
+function parse(s) {
+  var res = [];
+  if (!s) { return res; }
+  var parts = s.split("~");
+  for (var i = 0; i < parts.length; i++) {
+    var f = parts[i].split("|");
+    if (f.length >= 2) {
+      res.push({ t: unescape(f[0]), b: unescape(f[1]), d: f.length > 2 ? unescape(f[2]) : "" });
+    }
+  }
+  return res;
+}
+
+function cookieSet(name, val) {
+  var e = new Date();
+  e.setTime(e.getTime() + 365 * 24 * 3600 * 1000);
+  document.cookie = name + "=" + val + "; expires=" + e.toUTCString() + "; path=/";
+}
+
+function cookieGet(name) {
+  var all = document.cookie.split(";");
+  for (var i = 0; i < all.length; i++) {
+    var c = all[i];
+    while (c.charAt(0) == " ") { c = c.substring(1); }
+    if (c.indexOf(name + "=") == 0) { return c.substring(name.length + 1); }
+  }
+  return "";
+}
+
+function storeWrite(s) {
+  try {
+    if (window.localStorage) { window.localStorage.setItem(KEY, s); return "localStorage"; }
+  } catch (e1) { }
+  var size = 3000;
+  var n = Math.ceil(s.length / size);
+  if (n > 12) { return "penuh"; }
+  for (var i = 0; i < n; i++) { cookieSet(KEY + i, s.substring(i * size, (i + 1) * size)); }
+  cookieSet(KEY + "n", String(n));
+  return "cookie";
+}
+
+function storeRead() {
+  try {
+    if (window.localStorage) {
+      var v = window.localStorage.getItem(KEY);
+      if (v) { return v; }
+    }
+  } catch (e1) { }
+  var n = parseInt(cookieGet(KEY + "n"), 10);
+  if (isNaN(n)) { return ""; }
+  var s = "";
+  for (var i = 0; i < n; i++) { s += cookieGet(KEY + i); }
+  return s;
+}
+
+/* ---------- Tampilan daftar ---------- */
+
+function render() {
+  var ul = el("daftar");
+  ul.innerHTML = "";
+  if (notes.length == 0) {
+    var li0 = document.createElement("li");
+    li0.appendChild(document.createTextNode("Belum ada catatan."));
+    li0.style.padding = "9px 8px";
+    ul.appendChild(li0);
+  }
+  for (var i = 0; i < notes.length; i++) {
+    var li = document.createElement("li");
+    if (i == cur) { li.className = "on"; }
+    var a = document.createElement("a");
+    a.href = "#";
+    a.setAttribute("id", "n" + i);
+    a.onclick = makeOpen(i);
+    a.appendChild(document.createTextNode(notes[i].t || "(tanpa judul)"));
+    var sp = document.createElement("span");
+    sp.className = "tgl";
+    sp.appendChild(document.createTextNode(notes[i].d));
+    a.appendChild(sp);
+    li.appendChild(a);
+    ul.appendChild(li);
+  }
+  el("jumlah").innerHTML = "";
+  el("jumlah").appendChild(document.createTextNode(notes.length + " catatan tersimpan"));
+}
+
+function makeOpen(i) { return function () { buka(i); return false; }; }
+
+function buka(i) {
+  cur = i;
+  el("judul").value = notes[i].t;
+  el("isi").value = notes[i].b;
+  el("judulForm").innerHTML = "Ubah catatan";
+  tutupBagi();
+  render();
+  setStatus("Membuka catatan tanggal " + notes[i].d + ".");
+}
+
+function baru() {
+  cur = -1;
+  el("judul").value = "";
+  el("isi").value = "";
+  el("judulForm").innerHTML = "Catatan baru";
+  tutupBagi();
+  render();
+  setStatus("Formulir kosong. Isi judul dan catatan, lalu pilih Simpan catatan.");
+  return false;
+}
+
+/* ---------- Simpan dan hapus ---------- */
+
+function simpan() {
+  var t = el("judul").value;
+  var b = el("isi").value;
+  if (t == "" && b == "") { setStatus("Judul dan isi masih kosong. Tidak ada yang disimpan."); return false; }
+  if (t == "") { t = b.substring(0, 30); }
+  if (cur >= 0) {
+    notes[cur].t = t; notes[cur].b = b; notes[cur].d = now();
+  } else {
+    notes.unshift({ t: t, b: b, d: now() });
+    cur = 0;
+  }
+  var r = storeWrite(serialize());
+  el("judulForm").innerHTML = "Ubah catatan";
+  render();
+  if (r == "penuh") { setStatus("Penyimpanan penuh. Ekspor semua catatan lalu hapus yang lama."); }
+  else { setStatus("Catatan tersimpan (" + r + ")."); }
+  return false;
+}
+
+function hapus() {
+  if (cur < 0) { setStatus("Pilih catatan dari daftar dulu untuk menghapus."); return false; }
+  if (!window.confirm("Hapus catatan ini?")) { return false; }
+  notes.splice(cur, 1);
+  storeWrite(serialize());
+  baru();
+  setStatus("Catatan dihapus.");
+  return false;
+}
+
+/* ---------- Bagikan ---------- */
+
+function teksSatu(n) {
+  return n.t + "\n" + n.d + "\n\n" + n.b;
+}
+
+function tampilBagi(judul, teks, url, emailSubj) {
+  el("shareJudul").innerHTML = judul;
+  el("shareTeks").value = teks;
+  if (url) { el("shareUrl").value = url; el("shareLinkBox").style.display = "block"; }
+  else { el("shareLinkBox").style.display = "none"; }
+  var body = teks;
+  if (body.length > 1500) { body = body.substring(0, 1500); }
+  var enc = window.encodeURIComponent ? encodeURIComponent : escape;
+  el("btnEmail").href = "mailto:?subject=" + enc(emailSubj) + "&body=" + enc(body);
+  el("share").style.display = "block";
+  el("shareTeks").focus();
+  try { el("shareTeks").select(); } catch (e) { }
+}
+
+function bagikan() {
+  var t = el("judul").value;
+  var b = el("isi").value;
+  if (t == "" && b == "") { setStatus("Tidak ada catatan untuk dibagikan."); return false; }
+  var n = { t: t, b: b, d: (cur >= 0 ? notes[cur].d : now()) };
+  var base = window.location.href.split("#")[0];
+  var url = base + "#n=" + escape(n.t) + "|" + escape(n.b) + "|" + escape(n.d);
+  tampilBagi("Bagikan catatan", teksSatu(n), url, n.t);
+  setStatus("Salin teks atau alamat di bawah, lalu kirim.");
+  return false;
+}
+
+function bagikanSemua() {
+  if (notes.length == 0) { setStatus("Belum ada catatan untuk diekspor."); return false; }
+  tampilBagi("Ekspor semua catatan", serialize(), "", "Cadangan Arsip Catatan PS3");
+  setStatus("Simpan teks ini sebagai cadangan. Tempel di kolom Impor untuk memulihkan.");
+  return false;
+}
+
+function tutupBagi() {
+  el("share").style.display = "none";
+  return false;
+}
+
+/* ---------- Impor ---------- */
+
+function imporTeks() {
+  var s = el("impor").value;
+  s = s.replace(/^\s+|\s+$/g, "");
+  if (s == "") { setStatus("Kolom impor masih kosong."); return false; }
+  if (s.indexOf("#n=") >= 0) { s = s.substring(s.indexOf("#n=") + 3); }
+  var got = parse(s);
+  if (got.length == 0) { setStatus("Format tidak dikenali. Impor hanya menerima hasil Ekspor semua atau alamat Bagikan."); return false; }
+  for (var i = got.length - 1; i >= 0; i--) { notes.unshift(got[i]); }
+  storeWrite(serialize());
+  el("impor").value = "";
+  cur = -1;
+  render();
+  setStatus(got.length + " catatan diimpor.");
+  return false;
+}
+
+/* ---------- Mulai ---------- */
+
+function mulai() {
+  notes = parse(storeRead());
+  var h = window.location.hash;
+  if (h && h.indexOf("#n=") == 0) {
+    var got = parse(h.substring(3));
+    if (got.length > 0) {
+      notes.unshift(got[0]);
+      storeWrite(serialize());
+      cur = 0;
+      render();
+      buka(0);
+      setStatus("Catatan dari alamat berbagi sudah ditambahkan ke arsip.");
+      return;
+    }
+  }
+  render();
+  if (notes.length > 0) { setStatus("Siap. " + notes.length + " catatan dimuat."); }
+}
+
+mulai();
+//]]>
+</script>
+</body>
+</html>
